@@ -10,12 +10,18 @@
   column-gap: 2px;
 }
 
-.cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.cell,
+.emptyCell {
   width: 30px;
   height: 30px;
   border: 1px solid black;
   border-radius: 3px;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightslategray;
+  color: white;
 }

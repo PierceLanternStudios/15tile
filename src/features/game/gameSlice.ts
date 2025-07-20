@@ -3,7 +3,7 @@ import { type RootState } from "../../app/store";
 
 export interface gameState {
   grid: number[][];
-  emptyTile: { row: Number; col: Number };
+  openPos: { row: Number; col: Number };
 }
 
 const initialState: gameState = {
@@ -13,7 +13,7 @@ const initialState: gameState = {
     [8, 9, 10, 11],
     [12, 13, 14, 15],
   ],
-  emptyTile: { row: 0, col: 0 },
+  openPos: { row: 0, col: 0 },
 };
 
 export const gameSlice = createSlice({
@@ -24,6 +24,7 @@ export const gameSlice = createSlice({
 
 //selectors
 export const selectGrid = (state: RootState) => state.game.grid;
+export const selectOpenPos = (state: RootState) => state.game.openPos;
 
 //action generators
 export const {} = gameSlice.actions;
