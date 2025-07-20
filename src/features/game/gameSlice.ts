@@ -1,27 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { type RootState } from "../../app/store";
 
-const initialState = { value: 0 };
-
 export interface gameState {
-  tilePositions: number[][];
+  grid: number[][];
+  emptyTile: { row: Number; col: Number };
 }
+
+const initialState: gameState = {
+  grid: [
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, 10, 11],
+    [12, 13, 14, 15],
+  ],
+  emptyTile: { row: 0, col: 0 },
+};
 
 export const gameSlice = createSlice({
   name: "game",
   initialState,
-  reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-  },
+  reducers: {},
 });
 
 //selectors
-export const selectValue = (state: RootState) => state.game.value;
+export const selectGrid = (state: RootState) => state.game.grid;
 
 //action generators
-export const { increment } = gameSlice.actions;
+export const {} = gameSlice.actions;
 
 //primary reducer
 export default gameSlice.reducer;
