@@ -1,0 +1,21 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2px;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
