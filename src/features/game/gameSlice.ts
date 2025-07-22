@@ -8,12 +8,12 @@ export interface gameState {
 
 const initialState: gameState = {
   grid: [
-    [0, 1, 2, 3],
-    [4, 5, 6, 7],
-    [8, 9, 10, 11],
-    [12, 13, 14, 15],
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 0],
   ],
-  openPos: { row: 0, col: 0 },
+  openPos: { row: 3, col: 3 },
 };
 
 export const gameSlice = createSlice({
