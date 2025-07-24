@@ -30,41 +30,29 @@ export function GameBoard() {
       document.removeEventListener("keypress", handleKeyDown);
     };
   }, [dispatch]);
+
+  // generate flat list of cells for animation + rendering:
+  const flatCells = grid.flatMap((row, rowIdx) =>
+    row.map((cell, colIdx) => ({ val: cell, row: rowIdx, col: colIdx }))
+  );
+
+  // render the grid:
   return (
     <div>
       <div className={styles.grid}>
-        {grid.map((row, rowIdx) => (
+        {flatCells.map((cell) => (
           <div
-            className={styles.row}
+            key={cell.val}
+            className={cell.val === 0 ? styles.emptyCell : styles.cell}
             style={{
               position: "absolute",
-              top: rowIdx * 50 + 50,
+              transform: `translate(${cell.col * 50 + 50}px, ${
+                cell.row * 50 + 50
+              }px)`,
               transition: "transform 0.3s ease",
             }}
           >
-            {row.map((cell, colIdx) =>
-              cell === 0 ? (
-                <div
-                  className={styles.emptyCell}
-                  style={{
-                    position: "absolute",
-                    left: colIdx * 50 + 50,
-                    transition: "transform 0.3s ease",
-                  }}
-                ></div>
-              ) : (
-                <div
-                  className={styles.cell}
-                  style={{
-                    position: "absolute",
-                    left: colIdx * 50 + 50,
-                    transition: "transform 0.3s ease",
-                  }}
-                >
-                  {cell}
-                </div>
-              )
-            )}
+            {cell.val === 0 ? "" : cell.val}
           </div>
         ))}
       </div>
