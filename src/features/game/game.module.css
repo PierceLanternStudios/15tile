@@ -1,0 +1,28 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  transition-duration: 0.2s;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2px;
+}
+
+.cell,
+.emptyCell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightslategray;
+  color: white;
+}
