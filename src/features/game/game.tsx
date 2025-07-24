@@ -36,6 +36,8 @@ export function GameBoard() {
     row.map((cell, colIdx) => ({ val: cell, row: rowIdx, col: colIdx }))
   );
 
+  flatCells.sort((a, b) => a.val - b.val);
+
   // render the grid:
   return (
     <div>
