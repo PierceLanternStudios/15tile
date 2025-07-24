@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { moveUp, moveDown, moveLeft, moveRight, selectGrid } from "./gameSlice";
@@ -29,7 +29,7 @@ export function GameBoard() {
     return () => {
       document.removeEventListener("keypress", handleKeyDown);
     };
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <div className={styles.grid}>
