@@ -1,9 +1,6 @@
-import React from "react";
 import "./App.css";
 import { GameBoard } from "./features/game/game";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./app/store";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
