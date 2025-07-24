@@ -4,16 +4,20 @@ import { type RootState } from "../../app/store";
 export interface gameState {
   grid: number[][];
   openPos: { row: Number; col: Number };
+  gameOver: boolean;
 }
 
+export const INITAL_GRID = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 0],
+];
+
 const initialState: gameState = {
-  grid: [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 0],
-  ],
+  grid: INITAL_GRID,
   openPos: { row: 3, col: 3 },
+  gameOver: true,
 };
 
 export const gameSlice = createSlice({
@@ -23,7 +27,6 @@ export const gameSlice = createSlice({
     moveLeft: (state) => {
       // no-op if empty spot is on right col:
       if (state.openPos.col === state.grid[0].length - 1) {
-        console.log("NO-OP!");
         return state;
       }
       // otherwise, flip empty tile and tile in reverse direction:
@@ -39,7 +42,6 @@ export const gameSlice = createSlice({
     moveRight: (state) => {
       // no-op if empty spot is on left col:
       if (state.openPos.col === 0) {
-        console.log("NO-OP!");
         return state;
       }
 
@@ -70,7 +72,6 @@ export const gameSlice = createSlice({
     moveDown: (state) => {
       // no-op if empty spot is on right col:
       if (state.openPos.row === 0) {
-        console.log("NO-OP!");
         return state;
       }
 
@@ -119,19 +120,6 @@ function gridRecalculate(
   rowOffset: number,
   colOffset: number
 ) {
-  console.log(
-    grid.map((row, rowIdx) => {
-      return row.map((elem, colIdx) => {
-        if (rowIdx === openRow + rowOffset && colIdx === openCol + colOffset) {
-          return 0;
-        }
-        if (rowIdx === openRow && colIdx === openCol) {
-          return grid[rowIdx + rowOffset][colIdx + colOffset];
-        }
-        return grid[rowIdx][colIdx];
-      });
-    })
-  );
   return grid.map((row, rowIdx) => {
     return row.map((elem, colIdx) => {
       if (rowIdx === openRow + rowOffset && colIdx === openCol + colOffset) {
